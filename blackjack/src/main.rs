@@ -201,10 +201,12 @@ enum CardKind {
 
 impl fmt::Display for Card {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        use CardKind::*;
+
         let face = match &self.kind {
-            CardKind::Ace => "A".to_string(),
-            CardKind::Face(face_type) => face_type.to_string(),
-            CardKind::Number => self.value.to_string(),
+            Ace => "A".to_string(),
+            Face(face_type) => face_type.to_string(),
+            Number => self.value.to_string(),
         };
 
         write!(f, "{}{}", face, self.suit)
@@ -222,7 +224,7 @@ impl Deck {
 
         let mut cards: Vec<Card> = vec![];
 
-        for number in 2..11 {
+        for number in 2..=10 {
             for suit in SUITS.iter() {
                 cards.push(Card {
                     kind: Number,
