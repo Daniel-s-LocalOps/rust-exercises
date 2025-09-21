@@ -232,16 +232,16 @@ impl Deck {
             }
         }
 
-        for shape in SUITS.iter() {
+        for suit in SUITS.iter() {
             cards.push(Card {
                 kind: Ace,
-                suit: *shape,
+                suit: *suit,
                 value: 11,
             });
             for face_type in FACE_TYPE.iter() {
                 cards.push(Card {
                     kind: Face(*face_type),
-                    suit: *shape,
+                    suit: *suit,
                     value: 10,
                 });
             }
