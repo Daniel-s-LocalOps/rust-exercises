@@ -44,7 +44,7 @@ impl GameEngine {
             println!("Player hand: {}", self.player.hand);
             self.player.stand = true;
 
-            while !self.dealer.hand.value() < 17 {
+            while self.dealer.hand.value() < 17 {
                 self.dealer.hand.add(self.deck.draw_card());
             }
 
@@ -240,6 +240,7 @@ impl Deck {
                 suit: *suit,
                 value: 11,
             });
+
             for face_type in FACE_TYPE.iter() {
                 cards.push(Card {
                     kind: Face(*face_type),
