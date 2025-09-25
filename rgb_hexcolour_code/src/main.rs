@@ -43,11 +43,10 @@ impl FromStr for Rgb {
             return Err(ErrHandler::Something);
         }
 
+        // only works for 7 digit hex values, not short hand or transparency
         let red = u8::from_str_radix(&s[1..=2], 16).unwrap();
         let green = u8::from_str_radix(&s[3..=4], 16).unwrap();
         let blue = u8::from_str_radix(&s[5..=6], 16).unwrap();
-
-        println!("red: {}, green: {}, blue: {}", red, green, blue);
 
         Ok(Self {
             red: red,
